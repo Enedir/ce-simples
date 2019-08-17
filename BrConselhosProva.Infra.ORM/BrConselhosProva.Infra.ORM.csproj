@@ -50,7 +50,9 @@
   <ItemGroup>
     <Compile Include="Context\BrConselhosProvaContext.cs" />
     <Compile Include="Features\Students\StudentConfiguration.cs" />
+    <Compile Include="Features\Students\StudentRepository.cs" />
     <Compile Include="Features\Teachers\TeacherConfiguration.cs" />
+    <Compile Include="Features\Teachers\TeacherRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
