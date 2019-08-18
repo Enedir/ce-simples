@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<BrConselhosProva.WebApp.Models.TeacherListViewModel>
 
 @{
-    ViewBag.Title = "Lista de Professores";
+    ViewBag.Title = "Professores";
 }
 
 <h2>Lista de Professores</h2>
@@ -15,9 +15,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StudentCount)
-        </th>
         <th></th>
     </tr>
 
@@ -27,10 +24,7 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.StudentCount)
-        </td>
-        <td>
-            @Html.ActionLink("Deletar", "Delete", new {  id=item.Id  })
+            @Html.ActionLink("Excluir", "DeleteTeacher", new {  id=item.Id  })
         </td>
     </tr>
 }

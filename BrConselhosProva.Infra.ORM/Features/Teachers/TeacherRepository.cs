@@ -41,7 +41,7 @@ namespace BrConselhosProva.Infra.ORM.Features.Teachers
 
         public Teacher Save(Teacher teacher)
         {
-            if (teacher.Id == null)
+            if (teacher.Id == null || teacher.Id == Guid.Empty)
                 teacher.Id = Guid.NewGuid();
 
             var newTeacher = _context.Teachers.Add(teacher);

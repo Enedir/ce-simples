@@ -32,17 +32,19 @@ namespace BrConselhosProva.Infra.ORM.Features.Students
 
         public Student Get(Guid id)
         {
-            return _context.Students.Where(c => c.Id == id).FirstOrDefault();
+            return _context.Students.Where(c => c.Id == id)
+                                    .Include(x => x.Teacher)
+                                    .FirstOrDefault();
         }
 
         public IQueryable<Student> GetAll()
         {
-            return _context.Students;
+            return _context.Students.Include(x => x.Teacher);
         }
 
         public Student Save(Student student)
         {
-            if (student.Id == null)
+            if (student.Id == null || student.Id == Guid.Empty)
                 student.Id = Guid.NewGuid();
 
             var newstudent = _context.Students.Add(student);

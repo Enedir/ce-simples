@@ -1,4 +1,5 @@
 ﻿using BrConselhosProva.Domain.Features.Students;
+using BrConselhosProva.Domain.Features.Teachers;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
@@ -15,7 +16,9 @@ namespace BrConselhosProva.Infra.ORM.Features.Students
             ToTable("TBStudent");
             Property(e => e.Id).HasColumnName("IdStudent");
             Property(e => e.Name).IsRequired();
-        }
+            Property(e => e.Birthday).IsRequired();
+            Property(e => e.Age).IsRequired();
 
+        }
     }
 }

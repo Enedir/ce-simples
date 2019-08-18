@@ -6,12 +6,19 @@ using System.Web;
 
 namespace BrConselhosProva.WebApp.Models
 {
-    public class TeacherListViewModel
+    public class StudentListViewModel
     {
         public Guid Id { get; set; }
 
-        [Display(Name = "Nome:")]
+        [Display(Name = "Nome")]
         public string Name { get; set; }
-    }
 
+        [Display(Name = "Date de Nascimento")]
+        public String Birthday { get; set; }
+
+        [Display(Name = "Professor")]
+        public string TeacherName { get; set; }
+
+
+    }
 }

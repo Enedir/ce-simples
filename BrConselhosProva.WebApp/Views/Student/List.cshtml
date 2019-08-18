@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BrConselhosProva.WebApp.Models.StudentListViewModel>
+
+@{
+    ViewBag.Title = "Estudante";
+}
+
+<h2>Lista de Estudantes</h2>
+
+<div>
+    <button class="btn btn-default">
+        @Html.ActionLink("Adicionar", "Create")
+    </button>
+</div>
+<br>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeacherName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Birthday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeacherName)
+        </td>
+        <td>
+            @Html.ActionLink("Excluir", "DeleteStudent", new {  id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

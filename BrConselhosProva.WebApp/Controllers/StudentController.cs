@@ -1,4 +1,6 @@
-﻿using BrConselhosProva.Domain.Features.Students;
+﻿using AutoMapper;
+using BrConselhosProva.Application.Features.Students;
+using BrConselhosProva.Domain.Features.Students;
 using BrConselhosProva.Domain.Features.Teachers;
 using BrConselhosProva.WebApp.Models;
 using System;
@@ -12,56 +14,51 @@ namespace BrConselhosProva.WebApp.Controllers
 {
     public class StudentController : Controller
     {
-        // GET: Student
-        public ActionResult Index()
+        private IStudentService _studentService;
+        private ITeacherRepository _teacherRepository;
+
+        public StudentController(IStudentService studentService, ITeacherRepository teacherRepository)
         {
-            return View();
+            _studentService = studentService;
+            _teacherRepository = teacherRepository;
         }
 
-        // GET: Student/Details/5
-        public ActionResult Details(int id)
+
+        // GET: Student
+        public ActionResult List()
         {
-            return View();
+            var students = _studentService.GetTeachers();
+            var studentViews = Mapper.Map<List<Student>, List<StudentListViewModel>>(students);
+
+            return View(studentViews);
         }
 
         // GET: Student/Create
         public ActionResult Create()
         {
+            var dropDown = _teacherRepository.GetAll();
 
-            var lista_ddl = new List<Teacher>();
-
-            lista_ddl.Add(
-                         new Teacher()
-                         {
-                             Name = "OI",
-                             Id = Guid.NewGuid()
-                         });
-
-            SelectList dropDown = new SelectList(lista_ddl, "Id", "Name");
-
-            ViewBag.Teachers = dropDown;
-
+            ViewBag.Teachers = new SelectList(dropDown, "Id", "Name"); ;
 
             return View();
         }
 
         // POST: Student/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FormCollection formValues)
         {
             try
             {
-                // TODO: Add insert logic here
                 Student student = new Student()
                 {
-                    Name = collection["Name"],
-                  //  Birthday = new DateTime(collection["Birthday"]),
-                    TeacherId = new Guid(collection["TeacherId"])
+                    Name = formValues["Name"],
+                    Birthday = DateTime.Parse(formValues["Birthday"]),
+                    TeacherId = new Guid(formValues["TeacherId"])
                 };
 
+                _studentService.Save(student);
 
-
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
             catch(Exception e)
             {
@@ -69,48 +66,21 @@ namespace BrConselhosProva.WebApp.Controllers
             }
         }
 
-        // GET: Student/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Student/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        // GET: Student Id
+        [HttpGet]
+        public ActionResult DeleteStudent(Guid id)
         {
             try
             {
-                // TODO: Add update logic here
+                _studentService.Delete(id);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
             catch
             {
-                return View();
+                return new EmptyResult();
             }
-        }
 
-        // GET: Student/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Student/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

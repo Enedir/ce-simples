@@ -1,4 +1,9 @@
-﻿using BrConselhosProva.WebApp.Models;
+﻿using AutoMapper;
+using BrConselhosProva.Application.Features.Teachers;
+using BrConselhosProva.Domain.Features.Teachers;
+using BrConselhosProva.Infra.ORM.Context;
+using BrConselhosProva.Infra.ORM.Features.Teachers;
+using BrConselhosProva.WebApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +14,26 @@ namespace BrConselhosProva.WebApp.Controllers
 {
     public class TeacherController : Controller
     {
+
+        private ITeacherService _teacherService;
+
+        public TeacherController(ITeacherService teacherService)
+        {
+            _teacherService = teacherService;
+        }
+
         // GET: Teacher
+        [HttpGet]
         public ActionResult List()
         {
-            List<TeacherListViewModel> list = new List<TeacherListViewModel>();
-            list.Add(new TeacherListViewModel() { Name="Tua mãe", StudentCount = 16});
+            var teachers = _teacherService.GetTeachers();
+            var teacherViews = Mapper.Map<List<Teacher>, List<TeacherListViewModel>>(teachers);
 
-            return View(list);
+            return View(teacherViews);
         }
 
         // GET: Teacher/Create
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
@@ -26,40 +41,41 @@ namespace BrConselhosProva.WebApp.Controllers
 
         // POST: Teacher/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FormCollection formValues)
         {
             try
             {
-                // TODO: Add insert logic here
+                Teacher teacher = new Teacher()
+                {
+                    Name = formValues["Name"]
+                };
 
-                return RedirectToAction("Index");
+                _teacherService.Save(teacher);
+
+                return RedirectToAction("List");
             }
-            catch
+            catch (Exception e)
             {
                 return View();
             }
         }
 
-        // GET: Teacher/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Teacher/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        // GET: Teacher Id
+        [HttpGet]
+        public ActionResult DeleteTeacher(Guid id)
         {
             try
             {
-                // TODO: Add delete logic here
+                _teacherService.Delete(id);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
             catch
             {
-                return View();
+                return new EmptyResult();
             }
+
         }
+
     }
 }

@@ -12,7 +12,7 @@ namespace BrConselhosProva.Infra.ORM.Context
 {
     public class BrConselhosProvaContext : DbContext
     {
-        public BrConselhosProvaContext() : base(" BrConselhos_Estudante")
+        public BrConselhosProvaContext() : base("BrConselhos_Estudante")
         {
             Configuration.LazyLoadingEnabled = false;
             Configuration.ProxyCreationEnabled = false;

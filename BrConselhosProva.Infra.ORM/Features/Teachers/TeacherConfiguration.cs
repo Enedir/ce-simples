@@ -1,4 +1,5 @@
-﻿using BrConselhosProva.Domain.Features.Teachers;
+﻿using BrConselhosProva.Domain.Features.Students;
+using BrConselhosProva.Domain.Features.Teachers;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
@@ -15,6 +16,11 @@ namespace BrConselhosProva.Infra.ORM.Features.Teachers
             ToTable("TBTeacher");
             Property(e => e.Id).HasColumnName("IdTeacher");
             Property(e => e.Name).IsRequired();
+
+            HasMany<Student>(g => g.Students)
+           .WithRequired(s => s.Teacher)
+           .HasForeignKey<Guid>(s => s.TeacherId)
+           .WillCascadeOnDelete();
         }
 
     }

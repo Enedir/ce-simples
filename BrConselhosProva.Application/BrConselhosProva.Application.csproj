@@ -47,6 +47,11 @@
     <Compile Include="Features\Teachers\ITeacherService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BrConselhosProva.Domain\BrConselhosProva.Domain.csproj">
+      <Project>{7FE71CCF-DC36-45F5-8FD3-1DF71843B48B}</Project>
+      <Name>BrConselhosProva.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

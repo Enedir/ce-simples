@@ -12,6 +12,7 @@ namespace BrConselhosProva.Domain.Features.Students
         public Guid Id { get; set; }
         public string Name { get; set; }
         public DateTime Birthday { get; set; }
+        public int Age { get; set; }
         public Guid TeacherId { get; set; }
         public Teacher Teacher { get; set; }
 
@@ -23,9 +24,11 @@ namespace BrConselhosProva.Domain.Features.Students
             Birthday = birthday;
         }
 
-        public int GetAge
+        public int GetAge()
         {
-            get { return Convert.ToInt32((( DateTime.Now - Birthday.Date).TotalDays) / 365); }
+            Age = Convert.ToInt32(((DateTime.Now - Birthday.Date).TotalDays) / 365);
+
+            return Age;
         }
 
     }

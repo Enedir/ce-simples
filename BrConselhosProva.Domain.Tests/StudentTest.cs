@@ -16,10 +16,11 @@ namespace BrConselhosProva.Domain.Tests
             int expectedAge = 25;
 
             //Ação
-            int age = student.GetAge;
+            int age = student.GetAge();
 
             //Saída
             age.Should().Be(expectedAge);
+            student.Age.Should().Be(expectedAge);
         }
     }
 }
