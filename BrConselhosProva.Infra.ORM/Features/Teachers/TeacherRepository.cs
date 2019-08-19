@@ -39,6 +39,14 @@ namespace BrConselhosProva.Infra.ORM.Features.Teachers
             return _context.Teachers;
         }
 
+        public IQueryable<Teacher> GetTeacherHasStudentsWithAgeBetweenFifteenAndSeventeen()
+        {
+            return (from teacher in _context.Teachers
+                    join student in _context.Students on teacher.Id equals student.TeacherId
+                    where student.Age >= 15 && student.Age <=17
+                    select teacher);
+        }
+
         public Teacher Save(Teacher teacher)
         {
             if (teacher.Id == null || teacher.Id == Guid.Empty)

@@ -8,6 +8,12 @@
 
 <div>
     <button class="btn btn-default">
+        @Html.ActionLink("Filtrar alunos maiores de 16 anos", "FilterList")
+    </button>
+    <button class="btn btn-default">
+        @Html.ActionLink("Limpar filtro", "List")
+    </button>
+    <button class="btn btn-default">
         @Html.ActionLink("Adicionar", "Create")
     </button>
 </div>
@@ -26,21 +32,22 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Birthday)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TeacherName)
-        </td>
-        <td>
-            @Html.ActionLink("Excluir", "DeleteStudent", new {  id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeacherName)
+            </td>
+            <td>
+                @Html.ActionLink("Excluir", "DeleteStudent", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

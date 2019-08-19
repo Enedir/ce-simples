@@ -42,6 +42,11 @@ namespace BrConselhosProva.Infra.ORM.Features.Students
             return _context.Students.Include(x => x.Teacher);
         }
 
+        public IQueryable<Student> GetStudentThatHasAgeBiggestThenSixteen()
+        {
+            return _context.Students.Include(x => x.Teacher).Where(x => x.Age >= 16);
+        }
+
         public Student Save(Student student)
         {
             if (student.Id == null || student.Id == Guid.Empty)

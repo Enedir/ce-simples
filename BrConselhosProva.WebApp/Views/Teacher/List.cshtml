@@ -6,10 +6,32 @@
 
 <h2>Lista de Professores</h2>
 
-<p>
-    @Html.ActionLink("Novo Professor", "Create")
-    @Html.ActionLink("Filtro", "Create")
-</p>
+<div class="menu-right">
+
+    @using (Html.BeginForm("FilterList", "Teacher", FormMethod.Get, htmlAttributes: new { @class = "form-button-menu" }))
+    {
+        <button class="btn" type="submit">
+            Filtro de professores cuja média de idade de seus alunos é de 15 a 17 anos
+        </button>
+    }
+
+    @using (Html.BeginForm("List", "Teacher", FormMethod.Get, htmlAttributes: new { @class = "form-button-menu" }))
+    {
+        <button class="btn" type="submit">
+            Limpar filtro
+        </button>
+    }
+
+
+    @using (Html.BeginForm("Create", "Teacher", FormMethod.Get, htmlAttributes: new { @class = "form-button-menu" }))
+    {
+        <button class="btn btn-success menu-left" type="submit">
+            Adicionar
+        </button>
+    }
+
+</div>
+
 <table class="table">
     <tr>
         <th>
@@ -18,15 +40,16 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Excluir", "DeleteTeacher", new {  id=item.Id  })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Excluir", "DeleteTeacher", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

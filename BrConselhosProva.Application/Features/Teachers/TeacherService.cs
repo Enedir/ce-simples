@@ -21,6 +21,11 @@ namespace BrConselhosProva.Application.Features.Teachers
             return _teacherRepository.Delete(id);
         }
 
+        public List<Teacher> GetFilterTeacher()
+        {
+            return _teacherRepository.GetTeacherHasStudentsWithAgeBetweenFifteenAndSeventeen().ToList();
+        }
+
         public List<Teacher> GetTeachers()
         {
             return _teacherRepository.GetAll().ToList();

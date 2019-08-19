@@ -11,6 +11,7 @@ namespace BrConselhosProva.Domain.Features.Students
         bool Delete(Guid id);
         Student Get(Guid id);
         IQueryable<Student> GetAll();
+        IQueryable<Student> GetStudentThatHasAgeBiggestThenSixteen();
         Student Save(Student student);
         bool Update(Student student);
     }

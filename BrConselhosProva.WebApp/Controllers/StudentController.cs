@@ -25,15 +25,26 @@ namespace BrConselhosProva.WebApp.Controllers
 
 
         // GET: Student
+        [HttpGet]
         public ActionResult List()
         {
-            var students = _studentService.GetTeachers();
+                var students = _studentService.GetTeachers();
+                var studentViews = Mapper.Map<List<Student>, List<StudentListViewModel>>(students);
+
+                return View(studentViews);
+        }
+
+        [HttpGet]
+        public ActionResult FilterList()
+        {
+            var students = _studentService.GetFilterStudents();
             var studentViews = Mapper.Map<List<Student>, List<StudentListViewModel>>(students);
 
-            return View(studentViews);
+            return View("List",studentViews);
         }
 
         // GET: Student/Create
+        [HttpGet]
         public ActionResult Create()
         {
             var dropDown = _teacherRepository.GetAll();

@@ -22,3 +22,13 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.form-button-menu {
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.menu-right {
+    float: right;
+    margin-bottom: 15px;
+}

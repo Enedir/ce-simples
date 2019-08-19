@@ -32,6 +32,16 @@ namespace BrConselhosProva.WebApp.Controllers
             return View(teacherViews);
         }
 
+
+        [HttpGet]
+        public ActionResult FilterList()
+        {
+            var teachers = _teacherService.GetFilterTeacher();
+            var teacherViews = Mapper.Map<List<Teacher>, List<TeacherListViewModel>>(teachers);
+
+            return View("List", teacherViews);
+        }
+
         // GET: Teacher/Create
         [HttpGet]
         public ActionResult Create()

@@ -21,6 +21,11 @@ namespace BrConselhosProva.Application.Features.Students
             return _studentRepository.Delete(id);
         }
 
+        public List<Student> GetFilterStudents()
+        {
+            return _studentRepository.GetStudentThatHasAgeBiggestThenSixteen().ToList();
+        }
+
         public List<Student> GetTeachers()
         {
             return _studentRepository.GetAll().ToList();

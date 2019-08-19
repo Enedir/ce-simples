@@ -14,5 +14,6 @@ namespace BrConselhosProva.Application.Features.Teachers
         List<Teacher> GetTeachers();
 
         bool Delete(Guid id);
+        List<Teacher> GetFilterTeacher();
     }
 }
