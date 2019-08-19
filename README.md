@@ -9,4 +9,4 @@ Para executar com aplicação é necessário mudar as **ConnectionString** do **
 
 ## Migrações
 
-É possível também criar uma base de dados já populado executando a funcionalidade de  **Migration** do **EntityFramework**. Para uso desse recurso é necessário mudar a **ConnectionString** do **App.config** do projeto **BrConselhosProva.Infra.ORM**. Com as informações da sua instancia do *SQLServer*.  E abrir o Console Gerenciador de Pacotes do Nuget no do projeto **BrConselhosProva.Infra.ORM** para executar o comando update-database. Para  a migração ser efetuada.
+É possível também criar uma base de dados já populado executando a funcionalidade de  **Migration** do **EntityFramework**. Para uso desse recurso é necessário mudar a **ConnectionString** do **App.config** do projeto **BrConselhosProva.Infra.ORM**. Com as informações da sua instancia do *SQLServer*.  E abrir o Console Gerenciador de Pacotes do Nuget no projeto **BrConselhosProva.Infra.ORM** para executar o comando update-database. Para  a migração ser efetuada.
