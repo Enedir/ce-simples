@@ -46,11 +46,13 @@
     </div>
 }
 
-<div>
-    <button class="btn btn-default">
-        @Html.ActionLink("Voltar", "List")
-    </button>
-</div>
+
+@using (Html.BeginForm("List", "Student", FormMethod.Get))
+{
+<button class="btn btn-danger" type="submit">
+    Voltar
+</button>
+}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -6,18 +6,32 @@
 
 <h2>Lista de Estudantes</h2>
 
-<div>
-    <button class="btn btn-default">
-        @Html.ActionLink("Filtrar alunos maiores de 16 anos", "FilterList")
-    </button>
-    <button class="btn btn-default">
-        @Html.ActionLink("Limpar filtro", "List")
-    </button>
-    <button class="btn btn-default">
-        @Html.ActionLink("Adicionar", "Create")
-    </button>
+<div class="menu-right">
+
+    @using (Html.BeginForm("FilterList", "Student", FormMethod.Get, htmlAttributes: new { @class = "form-button-menu" }))
+    {
+        <button class="btn" type="submit">
+            Filtrar alunos maiores de 16 anos
+        </button>
+    }
+
+    @using (Html.BeginForm("List", "Student", FormMethod.Get, htmlAttributes: new { @class = "form-button-menu" }))
+    {
+        <button class="btn" type="submit">
+            Limpar filtro
+        </button>
+    }
+
+
+    @using (Html.BeginForm("Create", "Student", FormMethod.Get, htmlAttributes: new { @class = "form-button-menu" }))
+    {
+        <button class="btn btn-success menu-left" type="submit">
+            Adicionar
+        </button>
+    }
+
 </div>
-<br>
+
 <table class="table">
     <tr>
         <th>
@@ -25,6 +39,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Birthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TeacherName)
@@ -40,6 +57,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Birthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TeacherName)

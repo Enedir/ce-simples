@@ -17,6 +17,7 @@ namespace BrConselhosProva.WebApp.Profiles
                .ForMember(vm => vm.Id, map => map.MapFrom(m => m.Id))
                .ForMember(vm => vm.Name, map => map.MapFrom(m => m.Name))
                .ForMember(vm => vm.Birthday, map => map.MapFrom(m => m.Birthday.ToString("dd/MM/yyyy")))
+               .ForMember(vm => vm.Age, map => map.MapFrom(m => m.Age))
                .ForMember(vm => vm.TeacherName, map => map.MapFrom(m => m.Teacher.Name));
         }
 

@@ -10,7 +10,7 @@ namespace BrConselhosProva.WebApp.Models
     {
         public Guid Id { get; set; }
 
-        [Display(Name = "Nome:")]
+        [Display(Name = "Nome")]
         public string Name { get; set; }
     }
 

@@ -59,13 +59,22 @@
     <Compile Include="Features\Students\StudentRepository.cs" />
     <Compile Include="Features\Teachers\TeacherConfiguration.cs" />
     <Compile Include="Features\Teachers\TeacherRepository.cs" />
+    <Compile Include="Migrations\201908181442305_InitialCreate.cs" />
+    <Compile Include="Migrations\201908181442305_InitialCreate.Designer.cs">
+      <DependentUpon>201908181442305_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201908181442305_InitialCreate.resx">
+      <DependentUpon>201908181442305_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BrConselhosProva.Domain\BrConselhosProva.Domain.csproj">
       <Project>{7FE71CCF-DC36-45F5-8FD3-1DF71843B48B}</Project>

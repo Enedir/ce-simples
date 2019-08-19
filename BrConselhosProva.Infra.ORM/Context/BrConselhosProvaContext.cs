@@ -20,7 +20,7 @@ namespace BrConselhosProva.Infra.ORM.Context
 
         protected BrConselhosProvaContext(DbConnection connection) : base(connection, true) { }
 
-        public BrConselhosProvaContext(string connectionStringName) : base(string.Format("name={0}", connectionStringName)) { }
+        public BrConselhosProvaContext(string connectionStringName) : base(connectionStringName) { }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

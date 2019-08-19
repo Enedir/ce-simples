@@ -16,6 +16,9 @@ namespace BrConselhosProva.WebApp.Models
         [Display(Name = "Date de Nascimento")]
         public String Birthday { get; set; }
 
+        [Display(Name = "Idade")]
+        public int Age { get; set; }
+
         [Display(Name = "Professor")]
         public string TeacherName { get; set; }
 

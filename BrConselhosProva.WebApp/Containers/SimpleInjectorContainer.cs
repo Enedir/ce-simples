@@ -11,6 +11,7 @@ using SimpleInjector.Integration.Web.Mvc;
 using SimpleInjector.Lifestyles;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Reflection;
 using System.Web;
@@ -41,7 +42,9 @@ namespace BrConselhosProva.WebApp.Containers
             ContainerInstance.Register<ITeacherRepository, TeacherRepository>();
             ContainerInstance.Register<IStudentRepository, StudentRepository>();
 
-            ContainerInstance.Register(() => new BrConselhosProvaContext(), Lifestyle.Scoped);
+            var connectionString = ConfigurationManager.ConnectionStrings["BrConselhos_Estudante"].ConnectionString;
+
+            ContainerInstance.Register(() => new BrConselhosProvaContext(connectionString), Lifestyle.Scoped);
         }
     }
 }
